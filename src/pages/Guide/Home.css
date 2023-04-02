@@ -1,0 +1,139 @@
+section.card {
+    background: #f6f6f6;
+    border-radius: 24px 24px 24px 48px;
+    padding: 48px 48px 48px 308px;
+    margin: 84px 0;
+    width: 66vw;
+    max-width: 1120px;
+    min-width: 640px;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    position: relative;
+    box-shadow: 5px 0 0 0 rgba(204, 204, 204, 0.3), -5px 0 0 0 rgba(204, 204, 204, 0.3), 0 5px 0 0 rgba(204, 204, 204, 0.3);
+  }
+  section.card .text-content {
+    display: flex;
+    flex-direction: column;
+    width:900px;
+  }
+  section.card .text-content h3 {
+    margin: 0;
+    font-size: 1.5em;
+    max-width: 20ch;
+  }
+  section.card .text-content p {
+    margin: 10px  0;
+    max-width: 500px;
+  }
+  section.card .text-content a {
+    border: 3px solid #ff7300;
+    color: #ffffff;
+    background-color: #ff7300;
+    align-self: flex-start;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    transition: 400ms all;
+  }
+  section.card .text-content a:hover {
+    background: none;
+    color: rgb(255, 89, 0);
+  }
+  section.card .visual {
+    width: 240px;
+    height: 100%;
+    position: absolute;
+    top: -24px;
+    left: 20px;
+    overflow: hidden;
+    border-radius: 24px;
+
+  }
+  section.card .visual img {
+    width: 300px;
+  height: 300px;
+  object-fit: cover;
+    
+  }
+  section.card:nth-of-type(odd) {
+    margin: 0 0 0 248px;
+    border-radius: 24px 24px 48px 24px;
+    padding: 48px 308px 48px 60px;
+  }
+  section.card:nth-of-type(odd) .visual {
+    right: 24px;
+    left: auto;
+  }
+  section.card:nth-of-type(odd) .text-content a {
+    align-self: flex-start;
+  }
+  article {
+    margin: auto;
+    display: block;
+    width: calc(60vw + 248px);
+    max-width: calc(920px + 248px);
+    min-width: calc(640px + 248px);
+  }
+
+  @media all and (max-width: 1100px) {
+   
+    article {
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+    }
+    section.card {
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+    }
+    section.card .text-content {
+      width: 100%;
+    }
+    section.card:nth-of-type(odd) {
+      margin: 0;
+    }
+  }
+  @media all and (max-width: 720px) {
+    
+    section.card {
+      margin: 64px 0;
+      padding: 88px 36px 36px;
+      flex-direction: column;
+      border-radius: 24px;
+    }
+    section.card:nth-of-type(odd) {
+      padding: 88px 36px 36px;
+      border-radius: 24px;
+    }
+    section.card .text-content h3 {
+      max-width: calc(100% - 150px);
+      font-size: 1em;
+    }
+    section.card .text-content p,
+    section.card .text-content a {
+      font-size: 0.8em;
+    }
+    section.card .visual,
+    section.card:nth-of-type(odd) .visual {
+      width: 150px;
+      height: 150px;
+      right: 16px;
+      left: auto;
+    }
+    section.card .visual img,
+    section.card:nth-of-type(odd) .visual img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .container-guide {
+    box-sizing: border-box;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
