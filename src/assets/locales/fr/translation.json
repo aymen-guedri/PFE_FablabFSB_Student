@@ -1,0 +1,39 @@
+{
+  "home": "Accueil",
+  "guide": "Guider",
+  "forum": "Forum",
+  "reservation": "Réservation",
+  "offers": "Offres",
+  "workshops": "Ateliers",
+  "news":" Actualités du FabLab FSB",
+  "my_profile":"Mon profil",
+  "student": "Membre étudiant FSB",
+  "log_out":"Se déconnecter",
+  "fsb":"Faculté des science de bizerte",
+  "about_fablab":"À propos du FabLab FSB",
+  "about_fablab_content":"Notre FabLab est un espace créatif où vous pouvez concrétiser vos idées à l'aide d'outils et de technologies de fabrication numérique de pointe. Nous avons hâte de voir ce que vous allez créer !",
+  "get_started":"Commencer",
+  "link":"Liens",
+  "copyright":"Tous droits réservés. Développé par ",
+
+  "3d_printer":" Imprimante 3D",
+   "3d_printer_c":"Créez des objets en trois dimensions à partir d'une conception numérique. Dans un fablab, les imprimantes 3D sont utilisées pour créer des prototypes physiques et des produits finaux en utilisant une variété de matériaux. Le Fablab FSB propose généralement différents types d'imprimantes 3D avec différentes capacités, et les utilisateurs peuvent créer leurs propres conceptions ou télécharger des modèles préfabriqués à imprimer.",
+   "donwload":"Guide de téléchargement",
+
+   "cutting_machine": "Machine de découpe de vinyle",
+   "cutting_machine_c":"Découpez des motifs dans du vinyle adhésif pour réaliser des stickers, mais pas que ! La machine s'adapte à toutes les matières fines et souples.",
+
+   "laser_cu":"Découpe laser",
+   "laser_cu_c":"À l'origine réservée au milieu industriel, la machine de découpe laser permet de découper des matériaux comme le plastique, le métal ou encore le carton à partir d'un faisceau laser.",
+
+   "cnc_format":"CNC grand format",
+   "cnc_format_c":"Les machines CNC jouent un rôle important dans la production d'énergie, car ce processus nécessite une automatisation à grande échelle",
+
+   "mec_tools":"Outil mécanique",
+   "mec_tools_c":"L'outil mécanique dans un fablab fait référence à une machine utilisée pour façonner, couper, percer ou usiner divers matériaux tels que le bois, le métal ou le plastique.",
+
+   "scanner3d":"Scanner 3D",
+   "scanner3d_c":"La numérisation 3D est une technologie permettant de créer des modèles 3D de haute précision d'objets du monde réel"
+
+
+}

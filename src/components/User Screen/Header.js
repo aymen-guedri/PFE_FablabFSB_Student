@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import styled from 'styled-components'
 import { Links } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -6,12 +8,25 @@ function Header() {
     const { user } = useSelector((state) => state.authReducer.authData);
     const posts = useSelector((state)=>state.postReducer.posts)
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+
+
+    
+  const { t } = useTranslation();
+
+  const languageMap = {
+    en: { label: "English", dir: "ltr", active: true },
+    fr: { label: "Français", dir: "ltr", active: false },
+  };
+  const [selectedLang, setSelectedLang] = useState(
+    localStorage.getItem("i18nextLng") || "en"
+  );
+
   return (
     <Container>
         <Content>
             <Logo>
                 <a href='/home'>
-                    <img src='/logo.png' alt='' width="50px"/>
+                    <img src='/logo.png' alt='' width="45px"/>
                 </a>
             </Logo>
             <Search>
@@ -20,63 +35,98 @@ function Header() {
                 </div>
                 
             </Search>
+
+            <Search2>
+                  <ul>
+                   {/* Language selector */}
+                <li>
+                <div className="p-dropdown" >
+                  {" "}
+                  <a href="#">
+                    <span
+                      className=""
+                      style={
+                         {color:"#004658",fontSize:"18px",fontWeight:"600",cursor:"pointer"}}
+                          
+                    >
+
+                      {selectedLang.toUpperCase() == "FR" ? "Français " : "English"}
+                    </span>
+                    <i
+                      className="fa fa-light fa-angle-down m-l-5"
+                      style={{ fontSize: "1.1rem", color: "#004658" }}
+                    ></i>
+                  </a>
+                  <ul className="p-dropdown-content">
+                    {Object.keys(languageMap)?.map((item) => (
+                      <li key={item}>
+                        <a
+                          onClick={() => {
+                            console.log(`changing language to ${item}`);
+                            i18next.changeLanguage(item);
+                            setSelectedLang(item);
+                          }}
+                          style={{ cursor: "pointer",fontSize: "1.1rem"}}
+                        >
+                          {languageMap[item].label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <img className="lang" src="/images/langue.png" width="28px" />
+                </div>
+              </li>
+            </ul>
+                
+                
+            </Search2>
             <Nav>
                 <NavListWrap>
-                    <NavList className='active'>
+                    <NavList >
                         <a href='/'>
-                            <img src='/images/home.png' alt='' />
-                            <span>Home</span>
+                            <img src='/images/home.png' alt='' width="35px"/>
+                            <span>{t('home')}</span>
                         </a>
                     </NavList>
 
 
-                    <NavList>
-                        <a>
-                            <img src='/images/language.png' alt='' />
-                            <span>Language</span>
-                        </a>
-                    </NavList>
+                    
 
                     <NavList>
                         <a href='/guide'>
-                            <img src='/images/material.png' alt='' />
-                            <span>Guide</span>
+                            <img src='/images/guide.png' alt='' width="35px"/>
+                            <span>{t('guide')}</span>
+                        </a>
+                    </NavList>
+
+                   
+
+                    <NavList>
+                        <a href="https://forum-7dc12.web.app" target="_blank">
+                            <img src='/images/forum.png' alt='' width="35px"/>
+                            <span>{t('forum')}</span>
                         </a>
                     </NavList>
 
                     <NavList>
-                        <a href='/chat'>
-                            <img src='/images/un-message.png' alt='' />
-                            <span>Messages</span>
-                        </a>
-                    </NavList>
-
-                    <NavList>
-                        <a>
-                            <img src='/images/forum.png' alt='' />
-                            <span>Forum</span>
-                        </a>
-                    </NavList>
-
-                    <NavList>
-                        <a >
-                            <img src='/images/order.png' alt='' />
-                            <span>Orders</span>
+                        <a href='/orders'>
+                            <img src='/images/orders.png' alt='' width="40px" />
+                            <span>{t('reservation')}</span>
                         </a>
                     </NavList>
 
                     <NavList>
                         <a href='/offers'>
-                            <img src='/images/booking.png' alt='' />
-                            <span>Offers</span>
+                            <img src='/images/offers.png' alt='' width="35px" />
+                            <span>{t('offers')}</span>
                         </a>
                     </NavList>
 
 
                     <NavList>
                         <a href='/workshops'>
-                            <img src='/images/workshop.png' alt='' />
-                            <span>WorkShops</span>
+                            <img src='/images/workshop.png' alt='' width="35px" />
+                            <span>{t('workshops')}</span>
                         </a>
                     </NavList>
 
@@ -93,12 +143,157 @@ const Container=styled.div`
 background-color:#004658;
 border-bottom:1px solid rgba(0,0,0,0.08);
 left:0;
-padding:0 20px;
+padding:3px 20px;
 position:fixed;
 top:0;
 width:100vw;
 z-index:100;
 
+ul{
+    list-style-type:none;
+    
+}
+.p-dropdown {
+  float: left;
+  font-size: 13px;
+  font-weight: 300;
+  position: relative;
+  text-decoration: none;
+  width:105px;
+  margin-left:26%;
+  padding-left:8px;
+  background-color:white;
+  border-radius:10px;
+}
+
+.p-dropdown a:not(.btn) {
+  color: #3c4043;
+  text-decoration: none;
+}
+
+.p-dropdown .btn,
+.p-dropdown .title {
+  padding-bottom: 10px;
+  cursor: pointer;
+  overflow: unset !important;
+}
+
+.p-dropdown .btn:before {
+  top: 30px;
+  right: 5px;
+}
+
+.p-dropdown .btn ~ .dropdown-content {
+  top: 42px;
+}
+
+.p-dropdown .p-dropdown-content,
+.p-dropdown ul.p-dropdown-content {
+  line-height: normal;
+  position: absolute;
+  z-index: 5;
+  text-align: left;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  visibility: hidden;
+  -webkit-transform: translateY(8px);
+  -ms-transform: translateY(8px);
+  transform: translateY(8px);
+  padding: 14px 20px;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  top: auto;
+  right: 0;
+  margin: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #e4e6ef;
+  min-width: 100px;
+  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.1);
+}
+
+.p-dropdown .p-dropdown-content hr,
+.p-dropdown ul.p-dropdown-content hr {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.p-dropdown .p-dropdown-content ul,
+.p-dropdown ul.p-dropdown-content ul {
+  padding: 0;
+}
+
+.p-dropdown .p-dropdown-content ul > li,
+.p-dropdown .p-dropdown-content > li,
+.p-dropdown ul.p-dropdown-content ul > li,
+.p-dropdown ul.p-dropdown-content > li {
+  display: block;
+}
+
+.p-dropdown .p-dropdown-content ul > li:first-child label,
+.p-dropdown .p-dropdown-content > li:first-child label,
+.p-dropdown ul.p-dropdown-content ul > li:first-child label,
+.p-dropdown ul.p-dropdown-content > li:first-child label {
+  margin-top: 0;
+}
+
+.p-dropdown .p-dropdown-content ul > li label,
+.p-dropdown .p-dropdown-content > li label,
+.p-dropdown ul.p-dropdown-content ul > li label,
+.p-dropdown ul.p-dropdown-content > li label {
+  color: #e4e6ef;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-top: 14px;
+  margin-bottom: 0;
+}
+
+.p-dropdown .p-dropdown-content ul > li a,
+.p-dropdown .p-dropdown-content > li a,
+.p-dropdown ul.p-dropdown-content ul > li a,
+.p-dropdown ul.p-dropdown-content > li a {
+  line-height: 26px;
+  white-space: nowrap;
+  display: block;
+  padding: 2px 8px;
+}
+
+.p-dropdown .p-dropdown-content ul > li a i,
+.p-dropdown .p-dropdown-content > li a i,
+.p-dropdown ul.p-dropdown-content ul > li a i,
+.p-dropdown ul.p-dropdown-content > li a i {
+  margin-right: 6px;
+}
+
+.p-dropdown.p-dropdown-invert .p-dropdown-content,
+.p-dropdown.p-dropdown-invert ul.p-dropdown-content {
+  left: 0;
+  right: auto;
+}
+
+.p-dropdown.p-dropdown-invert .p-dropdown-content:before,
+.p-dropdown.p-dropdown-invert ul.p-dropdown-content:before {
+  content: " ";
+  right: auto;
+  left: 22px;
+}
+
+.p-dropdown:hover .title:before,
+.p-dropdown.dropdown-active .title:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.p-dropdown:hover .p-dropdown-content,
+.p-dropdown.dropdown-active .p-dropdown-content {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  visibility: visible;
+}
 
 `
 const Content=styled.div`
@@ -112,7 +307,7 @@ max-width:1128px;
 const Logo=styled.span`
 margin-right:8px;
 background-color:white;
-border-radius:20px;
+border-radius:10px;
 font-size:0px;
 display:"inline";
 
@@ -139,6 +334,42 @@ position:relative;
         vertical-align:text-top;
     }
 }
+`
+
+const Search2=styled.div`
+opacity:1;
+flex-grow:1;
+position:relative;
+margin-right:36%;
+border-radius:10px;
+padding-left:10px;
+
+
+.lang{
+    padding-left:20px;
+  
+   
+}
+
+&>div{
+    max-width:80px;
+    input{
+        border:none;
+        box-shadow:none;
+        background-color:#eef3f8;
+        border-radius:2px;
+        color:rgba(0,0,0,0.9);
+        width:218px;
+        padding:0 8px 0 40px;
+        line-height:1.75;
+        font-weight:400;
+        font-size:14px;
+        height:34px;
+        border-color:#dce6f1;
+        vertical-align:text-top;
+    }
+}
+
 `
 const SearchIcon=styled.div`
 width:40px;

@@ -1,11 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import styled from 'styled-components'
+
 import { getTimelinePosts } from "../../actions/PostsAction";
 import Post from "../Post/Post";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import styled from 'styled-components'
 
-function Main(props) {
+function Main() {
+    const { t } = useTranslation();
+
+  const languageMap = {
+    en: { label: "English", dir: "ltr", active: true },
+    fr: { label: "Français", dir: "ltr", active: false },
+  };
+  const [selectedLang, setSelectedLang] = useState(
+    localStorage.getItem("i18nextLng") || "en"
+  );
+
     const params = useParams()
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.authReducer.authData);
@@ -15,12 +28,17 @@ function Main(props) {
     }, []);
     if(!posts) return 'No Posts';
     if(params.id) posts = posts.filter((post)=> post.userId===params.id)
+
+
+      
+  
+
   return (
     <Container>
         <ShareBox>
             <div>
                 
-                <span style={{color:"#004658",fontWeight:"600",margin:"10px"}}>FabLab FSB News </span>
+                <span style={{color:"#004658",fontWeight:"600",margin:"10px"}}>{t('news')}</span>
             </div>
             
 

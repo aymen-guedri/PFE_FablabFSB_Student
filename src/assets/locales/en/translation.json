@@ -1,0 +1,49 @@
+{
+  "home": "home",
+  "guide": "Guide",
+  "forum": "Forum",
+  "reservation": "Reservation",
+  "offers": "Offers",
+  "workshops": "Workshops",
+  "news":"FabLab FSB News",
+
+  "my_profile":"My Profile",
+  "student": "FSB Student member",
+  "log_out":"Log Out",
+  
+  "fsb":"Science faculty of bizerte",
+
+  "about_fablab":"About FabLab FSB",
+  "about_fablab_content":"Our FabLab is a creative space where you can turn your ideas into reality using cutting-edge digital fabrication tools and technology. We can't wait to see what you'll create!",
+  "get_started":"Get Started",
+  "link":"Link",
+  "copyright":"All Right Reserved. Developed by ",
+
+
+  "3d_printer":" 3D Printer",
+  "3d_printer_c":"Create three-dimensional objects from a digital design. In a fablab, 3D printers are used to create physical prototypes and final products using a variety of materials. Fablab FSB typically offer various types of 3D printers with different capabilities, and users can create their own designs or download pre-made ones to print.",
+  "donwload":"Donwload Guide",
+
+  "cutting_machine": "Vinyl cutting machine",
+  "cutting_machine_c":"Cut patterns in adhesive vinyl to make stickers, but not only! The machine adapts to all thin and flexible materials.",
+
+  "laser_cu":"Laser cutting",
+  "laser_cu_c":"Originally reserved for the industrial environment, the laser cutting machine makes it possible to cut materials such as plastic, metal or even cardboard from a laser beam.",
+
+  "cnc_format":"Large format CNC",
+  "cnc_format_c":"CNC machines play a big role in power generation, as this process requires large-scale automation",
+
+  "mec_tools":"Mechanical tool",
+  "mec_tools_c":"Mechanical tool in a fablab refers to a piece of machinery used for shaping, cutting, drilling, or machining various materials such as wood, metal, or plastic.",
+
+  "scanner3d":"3D Scanner",
+  "scanner3d_c":"3D scanning is a technology for creating high-precision 3D models of real-world objects"
+  
+
+
+
+}
+
+
+
+

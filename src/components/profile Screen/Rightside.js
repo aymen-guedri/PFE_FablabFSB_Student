@@ -1,41 +1,51 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import FollowersCard from '../FollowersCard/FollowersCard'
 import styled from 'styled-components'
 function Rightside(props) {
+    const { t } = useTranslation();
+
+  const languageMap = {
+    en: { label: "English", dir: "ltr", active: true },
+    fr: { label: "Français", dir: "ltr", active: false },
+  };
+  const [selectedLang, setSelectedLang] = useState(
+    localStorage.getItem("i18nextLng") || "en"
+  );
+
+
   return (
     <Container>
         <FollowCard>
 
             <Title>
-                <h2 style={{color:"green"}}> About FabLab FSB</h2>
+                <h2 style={{color:"green"}}>{t('about_fablab')} </h2>
                 <img src='/images/feed-icon.svg' alt=''/>
             </Title>
 
 
             <div style={{color:"#000275",textAlign:"start",alignItems:"start",justifyContent:"start",fontWeight:"500"}}>
-            Our FabLab is a creative space where you can turn your ideas into reality using cutting-edge digital fabrication tools and technology. We can't wait to see what you'll create!
+            {t('about_fablab_content')}
             </div>
 <br/>
-            <Recommendation>
-                View all recommendations
-                <img src='/images/right-icon.svg' alt='' />
-            </Recommendation>
+            
             
 
 
         </FollowCard>
 
-        <BannerCard>
-           <Title>
-                <h4 style={{color:"orange"}}> Follow us on Facebook</h4>
-                <a href='https://www.facebook.com/FabLab.PAQ.4C.FSBizerte' target="_blank"> <img src='/images/fb.png'/> </a>
-            </Title>
-        </BannerCard>
+       
+
+
+       
     </Container>
   )
 }
 
 const Container =styled.div`
 grid-area:rightside;
+
 `;
 const FollowCard=styled.div`
 text-align:center;

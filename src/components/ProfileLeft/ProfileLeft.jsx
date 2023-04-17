@@ -7,7 +7,7 @@ const ProfileLeft = () => {
   return (
     <div className="ProfileSide">
         <InfoCard/>
-        <FollowersCard/>
+       
     </div>
   )
 }

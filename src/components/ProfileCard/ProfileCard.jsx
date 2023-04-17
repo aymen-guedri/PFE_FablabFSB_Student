@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import "./ProfileCard.css";
 import Cover from "../../img/cover.jpg";
 import Profile from "../../img/profileImg.jpg";
@@ -8,6 +10,18 @@ const ProfileCard = ({location}) => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const posts = useSelector((state)=>state.postReducer.posts)
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+
+
+  const { t } = useTranslation();
+
+  const languageMap = {
+    en: { label: "English", dir: "ltr", active: true },
+    fr: { label: "Français", dir: "ltr", active: false },
+  };
+  const [selectedLang, setSelectedLang] = useState(
+    localStorage.getItem("i18nextLng") || "en"
+  );
+
 
   return (
     <div className="ProfileCard">
@@ -35,13 +49,13 @@ const ProfileCard = ({location}) => {
         <hr />
         <div>
           <div className="follow">
-            <span>{user.followers.length}</span>
-            <span>Followers</span>
+           
+            <span>4C FSB </span>
           </div>
           <div className="vl"></div>
           <div className="follow">
-            <span>{user.following.length}</span>
-            <span>Following</span>
+           
+            <span>FSB</span>
           </div>
           {/* for profilepage */}
           {location === "profilePage" && (

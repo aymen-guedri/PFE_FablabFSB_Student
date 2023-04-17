@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import "./Home.css";
 import Header from '../../components/User Screen/Header'
 import styled from "styled-components";
 const Guide = () => {
-    
+  
+  const { t } = useTranslation();
+
+  const languageMap = {
+    en: { label: "English", dir: "ltr", active: true },
+    fr: { label: "Français", dir: "ltr", active: false },
+  };
+  const [selectedLang, setSelectedLang] = useState(
+    localStorage.getItem("i18nextLng") || "en"
+  );
+
   return (
     <div className="Home">
     <Header/>
@@ -11,9 +23,9 @@ const Guide = () => {
     <article>
   <section class="card">
     <div class="text-content">
-      <h3>3D Printer</h3>
-      <p>Create three-dimensional objects from a digital design. In a fablab, 3D printers are used to create physical prototypes and final products using a variety of materials. Fablab FSB typically offer various types of 3D printers with different capabilities, and users can create their own designs or download pre-made ones to print.</p>  
-      <a href="#">Download Guide</a>
+      <h3>{t('3d_printer')} </h3>
+      <p>{t('3d_printer_c')} </p>  
+      <a href="#">{t('donwload')} </a>
     </div>
     <div class="visual">
       <img src="/images/12.png" alt="" />
@@ -22,9 +34,9 @@ const Guide = () => {
 
   <section class="card">
     <div class="text-content">
-      <h3>Machine decoupe vinyle</h3>
-      <p> Découper des motifs dans du vinyle adhésif pour réaliser des stickers, mais pas uniquement ! La machine s'adapte à toutes les matériaux fins et flexibles.</p>  
-      <a href="#">Download Guide</a>
+      <h3>{t('cutting_machine')} </h3>
+      <p>{t('cutting_machine_c')} </p>  
+      <a href="#">{t('donwload')} </a>
     </div>
     <div class="visual">
       <img src="/images/1.png" alt="" />
@@ -35,9 +47,9 @@ const Guide = () => {
 
   <section class="card">
     <div class="text-content">
-      <h3>Découpe laser </h3>
-      <p>A l'origine réservée au milieu industriel, la machine de découpe laser permet de découper des matières de types plastique, métal ou encore carton à partir d'un rayon laser</p>  
-      <a href="#">Download Guide</a>
+      <h3>{t('laser_cu')} </h3>
+      <p>{t('laser_cu_c')}</p>  
+      <a href="#">{t('donwload')} </a>
     </div>
     <div class="visual">
       <img src="/images/5.JPg" alt="" />
@@ -47,9 +59,9 @@ const Guide = () => {
 
   <section class="card">
     <div class="text-content">
-      <h3>CNC grand format</h3>
-      <p> Les machines CNC jouent un grand rôle dans la production d'électricité, car ce processus nécessite une automatisation à grande échelle</p>  
-      <a href="#">Download Guide</a>
+      <h3>{t('cnc_format')} </h3>
+      <p>{t('cnc_format_c')} </p>  
+      <a href="#">{t('donwload')} </a>
     </div>
     <div class="visual">
       <img src="/images/4.JPg" alt="" />
@@ -59,9 +71,9 @@ const Guide = () => {
 
   <section class="card">
     <div class="text-content">
-      <h3>Outil mecanique</h3>
-      <p>Mechanical tool in a fablab refers to a piece of machinery used for shaping, cutting, drilling, or machining various materials such as wood, metal, or plastic.</p>  
-      <a href="#">Download Guide</a>
+      <h3>{t('mec_tools')} </h3>
+      <p>{t('mec_tools_c')} </p>  
+      <a href="#">{t('donwload')} </a>
     </div>
     <div class="visual">
       <img src="/images/10.JPg" alt="" />
@@ -71,9 +83,9 @@ const Guide = () => {
 
   <section class="card">
     <div class="text-content">
-      <h3>Scanner 3D</h3>
-      <p>3D scanning is a technology for creating high-precision 3D models of real-world objects</p>  
-      <a href="#">Download Guide</a>
+      <h3>{t('scanner3d')} </h3>
+      <p>{t('scanner3d_c')} </p>  
+      <a href="#">{t('donwload')} </a>
     </div>
     <div class="visual">
       <img src="/images/9.JPg" alt="" />
@@ -84,7 +96,7 @@ const Guide = () => {
 
 
     <Footer>
-        <div class="pg-footer">
+    <div class="pg-footer">
     <footer class="footer">
       <svg class="footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
         <path class="footer-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
@@ -98,10 +110,10 @@ const Guide = () => {
             </a>
           </div>
           <div class="footer-menu">
-            <h2 class="footer-menu-name"> Get Started</h2>
+            <h2 class="footer-menu-name">{t('get_started')} </h2>
             <ul id="menu-get-started" class="footer-menu-list">
               <li class="menu-item menu-item-type-post_type menu-item-object-product">
-                <a href="#">Our FabLab is a creative space where you can turn your ideas into reality using cutting-edge digital fabrication tools and technology. We can't wait to see what you'll create!</a>
+                <a href="#">{t('about_fablab_content')} </a>
               </li>
              
               
@@ -113,18 +125,18 @@ const Guide = () => {
             <h2 class="footer-menu-name"> FabLab FSB</h2>
             <ul id="menu-company" class="footer-menu-list">
               <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="#">Orders</a>
+                <a href="#">{t('reservation')}</a>
               </li>
               <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-                <a href="#">News</a>
+                <a href="#">{t('guide')}</a>
               </li>
               <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="#">Materials</a>
+                <a href="#">{t('offers')}</a>
               </li>
             </ul>
           </div>
           <div class="footer-menu">
-            <h2 class="footer-menu-name"> Links</h2>
+            <h2 class="footer-menu-name">{t('link')} </h2>
             <ul id="menu-legal" class="footer-menu-list">
               <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
                 <a href="#">FabLab Forum</a>
@@ -138,7 +150,7 @@ const Guide = () => {
             <h2 class="footer-menu-name"> Location</h2>
             <ul id="menu-quick-links" class="footer-menu-list">
               <li class="menu-item menu-item-type-custom menu-item-object-custom">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.8244228667863!2d9.878045414580827!3d37.26698184898558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e31fcabaf83cd1%3A0x2e1cd92f29a2fa27!2sFacult%C3%A9%20des%20Sciences%20de%20Bizerte!5e1!3m2!1sfr!2stn!4v1679935896793!5m2!1sfr!2stn" width="400" height="300" style={{border:"0",width:"360px",height:"250px",borderRadius:"20px"}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>              </li> 
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.8244228667863!2d9.878045414580827!3d37.26698184898558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e31fcabaf83cd1%3A0x2e1cd92f29a2fa27!2sFacult%C3%A9%20des%20Sciences%20de%20Bizerte!5e1!3m2!1sfr!2stn!4v1679935896793!5m2!1sfr!2stn" width="400" height="300" style={{border:"0",width:"360px",height:"250px",borderRadius:"20px"}} allowfullscreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>              </li> 
             </ul>
           </div>
         </div>
@@ -153,11 +165,11 @@ const Guide = () => {
               <path class="footer-social-icon-path" d="M9,25H4V10h5V25z M6.501,8C5.118,8,4,6.879,4,5.499S5.12,3,6.501,3C7.879,3,9,4.121,9,5.499C9,6.879,7.879,8,6.501,8z M27,25h-4.807v-7.3c0-1.741-0.033-3.98-2.499-3.98c-2.503,0-2.888,1.896-2.888,3.854V25H12V9.989h4.614v2.051h0.065 c0.642-1.18,2.211-2.424,4.551-2.424c4.87,0,5.77,3.109,5.77,7.151C27,16.767,27,25,27,25z"></path>
             </svg>
           </a>
-          <a class="footer-social-link twitter" href="#" target="_blank">
-            <span class="hidden-link-text">Twitter</span>
-            <svg class="footer-social-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
-              <path class="footer-social-icon-path" d="M 25.855469 5.574219 C 24.914063 5.992188 23.902344 6.273438 22.839844 6.402344 C 23.921875 5.75 24.757813 4.722656 25.148438 3.496094 C 24.132813 4.097656 23.007813 4.535156 21.8125 4.769531 C 20.855469 3.75 19.492188 3.113281 17.980469 3.113281 C 15.082031 3.113281 12.730469 5.464844 12.730469 8.363281 C 12.730469 8.773438 12.777344 9.175781 12.867188 9.558594 C 8.503906 9.339844 4.636719 7.246094 2.046875 4.070313 C 1.59375 4.847656 1.335938 5.75 1.335938 6.714844 C 1.335938 8.535156 2.261719 10.140625 3.671875 11.082031 C 2.808594 11.054688 2 10.820313 1.292969 10.425781 C 1.292969 10.449219 1.292969 10.46875 1.292969 10.492188 C 1.292969 13.035156 3.101563 15.15625 5.503906 15.640625 C 5.0625 15.761719 4.601563 15.824219 4.121094 15.824219 C 3.78125 15.824219 3.453125 15.792969 3.132813 15.730469 C 3.800781 17.8125 5.738281 19.335938 8.035156 19.375 C 6.242188 20.785156 3.976563 21.621094 1.515625 21.621094 C 1.089844 21.621094 0.675781 21.597656 0.265625 21.550781 C 2.585938 23.039063 5.347656 23.90625 8.3125 23.90625 C 17.96875 23.90625 23.25 15.90625 23.25 8.972656 C 23.25 8.742188 23.246094 8.515625 23.234375 8.289063 C 24.261719 7.554688 25.152344 6.628906 25.855469 5.574219 "></path>
-            </svg>
+          <a class="footer-social-link twitter" href="https://www.facebook.com/FabLab.PAQ.4C.FSBizerte" target="_blank">
+            <span class="hidden-link-text">Facebook</span>
+            <svg class="footer-social-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+   <path class="footer-social-icon-path" d="M19.125 0H4.875C2.1875 0 0 2.1875 0 4.875v15.25C0 21.8125 2.1875 24 4.875 24h7.383125v-9.28125H9.1875v-3.59375h3.070625V7.230469C12.257031 4.722656 13.898438 3 16.824219 3c1.15625 0 2.148438.0859375 2.4375.125v3.40625l-1.664063.003906c-1.3125 0-1.5625.625-1.5625 1.53125v2.03125h3.125l-.40625 3.59375h-2.71875v9.28125h5.3203125c2.6875 0 4.875-2.1875 4.875-4.875V4.875C24 2.1875 21.8125 0 19.125 0z"/>
+</svg>
           </a>
           <a class="footer-social-link youtube" href="#" target="_blank">
             <span class="hidden-link-text">Youtube</span>
@@ -176,7 +188,7 @@ const Guide = () => {
       <div class="footer-copyright">
         <div class="footer-copyright-wrapper">
           <p class="footer-copyright-text">
-            <a class="footer-copyright-link" href="https://aymenguedri.me/" target="_blank"> CopyRight ©2023. All Right Reserved. Developed by Aymen Guedri </a>
+            <a class="footer-copyright-link" href="https://aymenguedri.me/" target="_blank"> CopyRight ©2023. {t('copyright')} Aymen Guedri </a>
           </p>
         </div>
       </div>
@@ -199,6 +211,7 @@ const Footer=styled.div`
 * {
   margin: 0;
   padding: 0;
+  font-family: 'PT Sans Narrow', sans-serif;
   
 }
 a {

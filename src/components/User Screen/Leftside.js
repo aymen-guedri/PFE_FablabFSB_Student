@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import styled from 'styled-components'
 import { Links } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +15,18 @@ const dispatch = useDispatch()
 const handleLogOut = ()=> {
     dispatch(logout())
   }
+
+
+    
+  const { t } = useTranslation();
+
+  const languageMap = {
+    en: { label: "English", dir: "ltr", active: true },
+    fr: { label: "Français", dir: "ltr", active: false },
+  };
+  const [selectedLang, setSelectedLang] = useState(
+    localStorage.getItem("i18nextLng") || "en"
+  );
 
 
   return (
@@ -34,7 +48,7 @@ const handleLogOut = ()=> {
                     <Link><span>{user.firstname} {user.lastname}</span></Link>
                 </a>
 
-                <a><AddPhotoText>FSB Student member</AddPhotoText></a>
+                <a><AddPhotoText> {t('student')} </AddPhotoText></a>
 
             </Userinfo>
 
@@ -44,7 +58,7 @@ const handleLogOut = ()=> {
                 
      
           
-            My Profile
+            {t('my_profile')}
           
       
       
@@ -55,20 +69,20 @@ const handleLogOut = ()=> {
             </Widget>
 
             <Item>
-            <button className="button " onClick={handleLogOut}>Log Out</button>
+            <button className="button " onClick={handleLogOut}>{t('log_out')} </button>
             </Item>
         </ArtCard>
 
         <CommunityCard>
-            <a>
+            <a >
                 <span>
-                   Materials
+                   {t('fsb')}
                 </span>
             </a>
             <a>
                 <span>
-                    events
-                    <img src='/images/plus-icon.svg' alt=''/>
+                    4C FSB
+                  
                 </span>
             </a>
             <a>
