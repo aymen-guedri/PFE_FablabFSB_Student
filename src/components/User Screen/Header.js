@@ -115,12 +115,7 @@ function Header() {
                         </a>
                     </NavList>
 
-                    <NavList>
-                        <a href='/offers'>
-                            <img src='/images/offers.png' alt='' width="35px" />
-                            <span>{t('offers')}</span>
-                        </a>
-                    </NavList>
+                    
 
 
                     <NavList>
@@ -396,6 +391,7 @@ display:block;
     bottom:0;
     background:#004658;
     width:100%;
+    
 }
 `
 const NavListWrap=styled.ul`
@@ -427,7 +423,7 @@ a{
     flex-direction:column;
     font-size:12px;
     font-weight:400;
-    justify-content:centerM
+    justify-content:center;
     line-height:1.5;
     min-height:32px;
     min-width:80px;
@@ -442,7 +438,7 @@ a{
 
     }
     @media(max-width:768px){
-        min-width:60px;
+        min-width:75px;
 
     }
 }

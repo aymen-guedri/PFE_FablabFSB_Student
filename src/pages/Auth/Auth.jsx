@@ -22,7 +22,7 @@ const Auth = () => {
 
   const [confirmPass, setConfirmPass] = useState(true);
 
-  // const dispatch = useDispatch()
+  const usernameRegex = /^[^\s@]+@fsb\.u-carthage\.tn$/;
 
   // Reset Form
   const resetForm = () => {
@@ -39,6 +39,10 @@ const Auth = () => {
   const handleSubmit = (e) => {
     setConfirmPass(true);
     e.preventDefault();
+    if (!usernameRegex.test(data.username)) {
+      alert("Email is not correct");
+      return;
+    }
     if (isSignUp) {
       data.password === data.confirmpass
         ? dispatch(signUp(data, navigate))
@@ -51,9 +55,6 @@ const Auth = () => {
   return (
     <div className="Auth">
       {/* left side */}
-
-     
-
       <div className="a-left">
         <img src={Logo} alt="" />
 
@@ -61,12 +62,10 @@ const Auth = () => {
           <h1>FabLab FSB</h1>
           <h6>Welcome to our FabLabFSB Student side!</h6>
           {/*Our FabLab is a creative space where you can turn your ideas into reality using cutting-edge digital fabrication tools and technology.To access our FabLab resources, please enter your username and password below. We can't wait to see what you'll create! */}
-       
         </div>
       </div>
 
       {/* right form side */}
-
       <div className="a-right">
         <form className="infoForm authForm" onSubmit={handleSubmit}>
           <h3>{isSignUp ? "Register" : "Login"}</h3>
@@ -103,8 +102,14 @@ const Auth = () => {
               value={data.username}
               onChange={handleChange}
             />
+            {data.username &&
+              !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.username) && (
+                <span style={{ color: "red", fontSize: "12px" }}>
+                  *Please enter a valid email ending with @fsb.u-carthage.tn
+                </span>
+              )}
           </div>
-          
+
           <div>
             <input
               required

@@ -115,12 +115,6 @@ function Header() {
                         </a>
                     </NavList>
 
-                    <NavList>
-                        <a href='/offers'>
-                            <img src='/images/offers.png' alt='' width="35px" />
-                            <span>{t('offers')}</span>
-                        </a>
-                    </NavList>
 
 
                     <NavList>
