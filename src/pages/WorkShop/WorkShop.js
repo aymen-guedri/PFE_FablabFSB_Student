@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.min.css';
 import Header from '../../components/User Screen/Header';
@@ -6,6 +6,9 @@ import './workshop.css';
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import styled from 'styled-components'
+import WorkshopCard from './WorkshopCard';
+import axios from 'axios';
+
 function WorkShop() {
   const { t } = useTranslation();
 
@@ -14,87 +17,35 @@ function WorkShop() {
     fr: { label: "Français", dir: "ltr", active: false },
   };
 
+
+
+
+
+  const [workshops, setWorkshops] = useState([]);
+
   useEffect(() => {
-    var swiper = new Swiper('.blog-slider', {
-      direction: 'vertical', // Set the direction to vertical
-      spaceBetween: 30,
-      effect: 'fade',
-      loop: true,
-      mousewheel: {
-        invert: false,
-      },
-      // autoHeight: true,
-      pagination: {
-        el: '.blog-slider__pagination',
-        clickable: true,
-      },
-    });
+    // Fetch workshops from the backend or your API
+    axios
+      .get('/api/workshops')
+      .then((response) => {
+        setWorkshops(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
     <div className='Home'>
       <Header />
 
-      <div className='blog-slider'>
-        <div className='blog-slider__wrp swiper-wrapper'>
-          <div className='blog-slider__item swiper-slide'>
-            <div className='blog-slider__img'>
-              <img
-                src='/1.jpg'
-                alt=''
-              />
-            </div>
-            <div className='blog-slider__content'>
-              <span className='blog-slider__code'>26 Avril 2023</span>
-              <div className='blog-slider__title'>Bootcamp of the FSB'INNOV 1.0 Competition </div>
-              <div className='blog-slider__text'>
-              🚀 J-1️⃣ Bootcamp of the FSB'INNOV 1.0 Competition dedicated to the students of the Faculté des Sciences de Bizerte organized as part of the activities of the PAQ-DGSE MIRE Project.
-🚀 The Bootcamp takes place from 2️⃣6️⃣ to 2️⃣8️⃣ April 2️⃣0️⃣2️⃣3️⃣ at the Grand Amphi from 9️⃣H to 1️⃣7️⃣H.
-🚀 More than 30 entrepreneurship projects compete in the semi-final on April 2️⃣8️⃣ 2️⃣0️⃣2️⃣3️⃣, the top ten projects will compete in the FSB'INNOV 1.0 Competition Final on May 5️⃣0️⃣2⃣3️⃣
-🏃 ♂️ 🏃 ♀️ 🏃 Be there!! ❤️{' '}
-              </div>
-              <a href='https://www.4c.tn/Formation/_Details/4883' className='blog-slider__button'>
-                Inscription
-              </a>
-            </div>
-          </div>
-
-          <div className='blog-slider__item swiper-slide'>
-            <div className='blog-slider__img'>
-              <img
-                src='/2.jpg'
-                alt=''
-              />
-            </div>
-            <div className='blog-slider__content'>
-              <span className='blog-slider__code'>8, 9 et 10 février 2023</span>
-              <div className='blog-slider__title'>Atelier de Formation</div>
-              <div className='blog-slider__text'>
-              🤖En partenariat avec L'Agence Universitaire de la Francophonie, le Centre 4C-FS Bizerte organise un atelier de Formation  "FabLab Manager" dans le cadre du projet PAQ-4C de la Faculté des Sciences de Bizerte  et ce les 8, 9 et 10 février 2023 au Coworking Space du FabLab FSB.
-🤖Nombre de places : 12 (Membres 4C-FSBizerte et du comité de pilotage du projet PAQ-4C, Enseignants en Digitalisation et prototypage, Référent Pôle Etudiant Entrepreneur de Carthage - PEEC-FSB et administratifs du FabLab-FSB).
-🤖Formateurs : M. Mohamed Ali Trabelsi et Rihab Sahbeni - Association Jeunes Science de Tunisie  (AJST) 
-🤖Inscription sur la plateforme www.4c.tn  avec les comptes institutionnels 
-↘️ Lien d'inscription : https://www.4c.tn/Formation/_Details/4883
-#FSB
-#AUF
-#4C_FSBizerte
-#fablab_fsb
-#PEEC{' '}
-              </div>
-              <a href='#' className='blog-slider__button'>
-                Inscription
-              </a>
-            </div>
-          </div>
-
-      
-          
-
-        </div>
-        <div className='blog-slider__pagination' />
-      </div>
+      <div>
+      {workshops.map((workshop) => (
+        <WorkshopCard key={workshop._id} workshop={workshop} />
+      ))}
+    </div>
       <Footer>
-      <div class="pg-footer">
+    <div class="pg-footer">
     <footer class="footer">
       <svg class="footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
         <path class="footer-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
@@ -123,13 +74,13 @@ function WorkShop() {
             <h2 class="footer-menu-name"> FabLab FSB</h2>
             <ul id="menu-company" class="footer-menu-list">
               <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="#">{t('reservation')}</a>
+                <a href="/orders">{t('reservation')}</a>
               </li>
               <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-                <a href="#">{t('guide')}</a>
+                <a href="/guide">{t('guide')}</a>
               </li>
               <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="#">{t('offers')}</a>
+                <a href="/offers">{t('offers')}</a>
               </li>
             </ul>
           </div>
@@ -148,7 +99,7 @@ function WorkShop() {
             <h2 class="footer-menu-name"> Location</h2>
             <ul id="menu-quick-links" class="footer-menu-list">
               <li class="menu-item menu-item-type-custom menu-item-object-custom">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.8244228667863!2d9.878045414580827!3d37.26698184898558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e31fcabaf83cd1%3A0x2e1cd92f29a2fa27!2sFacult%C3%A9%20des%20Sciences%20de%20Bizerte!5e1!3m2!1sfr!2stn!4v1679935896793!5m2!1sfr!2stn" width="400" height="300" style={{border:"0",width:"360px",height:"250px",borderRadius:"20px"}} allowfullscreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>              </li> 
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.8244228667863!2d9.878045414580827!3d37.26698184898558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e31fcabaf83cd1%3A0x2e1cd92f29a2fa27!2sFacult%C3%A9%20des%20Sciences%20de%20Bizerte!5e1!3m2!1sfr!2stn!4v1679935896793!5m2!1sfr!2stn" width="400" height="300" style={{border:"0",width:"310px",height:"250px",borderRadius:"20px"}} allowfullscreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>              </li> 
             </ul>
           </div>
         </div>
@@ -186,13 +137,13 @@ function WorkShop() {
       <div class="footer-copyright">
         <div class="footer-copyright-wrapper">
           <p class="footer-copyright-text">
-            <a class="footer-copyright-link" href="https://aymenguedri.me/" target="_blank"> CopyRight ©2023. {t('copyright')} Aymen Guedri </a>
+          <a class="footer-copyright-link" href="https://aymenguedri.me/" target="_blank" style={{fontSize:"15px"}}> CopyRight ©2023. {t('copyright')} <span style={{color:"#01FDC8",fontWeight:"700"}}>Aymen Guedri</span> </a>
           </p>
         </div>
       </div>
     </footer>
   </div>
-      </Footer>
+    </Footer>
     </div>
   );
 }
@@ -457,12 +408,19 @@ a {
 /* Media Query For different screens */
 @media (min-width:320px) and (max-width:479px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
   .footer-content {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1230px;
-    padding: 40px 15px 1050px;
+    margin-left:  -60px;
+    margin-right: 0px;
+    max-width: 390px;
+    padding: 40px 15px 850px;
     position: relative;
   }
+  .footer-copyright {
+    display: none;
+}
+
+.footer-social-links{
+  display: none;
+}
 }
 @media (min-width:480px) and (max-width:599px)  { /* smartphones, Android phones, landscape iPhone */
   .footer-content {

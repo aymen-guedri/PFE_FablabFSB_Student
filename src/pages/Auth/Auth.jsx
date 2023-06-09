@@ -22,7 +22,7 @@ const Auth = () => {
 
   const [confirmPass, setConfirmPass] = useState(true);
 
-  const usernameRegex = /^[^\s@]+@fsb\.u-carthage\.tn$/;
+  const usernameRegex = /^[^\s@]+@(fsb\.u-carthage\.tn|fsb\.ucar\.tn)$/;
 
   // Reset Form
   const resetForm = () => {

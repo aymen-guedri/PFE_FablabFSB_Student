@@ -20,8 +20,9 @@ function Home_total() {
     <div>
       <Header/>
       <Home/>
+      
       <Footer>
-      <div class="pg-footer">
+    <div class="pg-footer">
     <footer class="footer">
       <svg class="footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
         <path class="footer-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
@@ -50,13 +51,13 @@ function Home_total() {
             <h2 class="footer-menu-name"> FabLab FSB</h2>
             <ul id="menu-company" class="footer-menu-list">
               <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="#">{t('reservation')}</a>
+                <a href="/orders">{t('reservation')}</a>
               </li>
               <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-                <a href="#">{t('guide')}</a>
+                <a href="/guide">{t('guide')}</a>
               </li>
               <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                <a href="#">{t('offers')}</a>
+                <a href="/offers">{t('offers')}</a>
               </li>
             </ul>
           </div>
@@ -75,7 +76,7 @@ function Home_total() {
             <h2 class="footer-menu-name"> Location</h2>
             <ul id="menu-quick-links" class="footer-menu-list">
               <li class="menu-item menu-item-type-custom menu-item-object-custom">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.8244228667863!2d9.878045414580827!3d37.26698184898558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e31fcabaf83cd1%3A0x2e1cd92f29a2fa27!2sFacult%C3%A9%20des%20Sciences%20de%20Bizerte!5e1!3m2!1sfr!2stn!4v1679935896793!5m2!1sfr!2stn" width="400" height="300" style={{border:"0",width:"360px",height:"250px",borderRadius:"20px"}} allowfullscreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>              </li> 
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.8244228667863!2d9.878045414580827!3d37.26698184898558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e31fcabaf83cd1%3A0x2e1cd92f29a2fa27!2sFacult%C3%A9%20des%20Sciences%20de%20Bizerte!5e1!3m2!1sfr!2stn!4v1679935896793!5m2!1sfr!2stn" width="400" height="300" style={{border:"0",width:"310px",height:"250px",borderRadius:"20px"}} allowfullscreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>              </li> 
             </ul>
           </div>
         </div>
@@ -113,13 +114,13 @@ function Home_total() {
       <div class="footer-copyright">
         <div class="footer-copyright-wrapper">
           <p class="footer-copyright-text">
-            <a class="footer-copyright-link" href="https://aymenguedri.me/" target="_blank"> CopyRight ©2023. {t('copyright')} Aymen Guedri </a>
+          <a class="footer-copyright-link" href="https://aymenguedri.me/" target="_blank" style={{fontSize:"15px"}}> CopyRight ©2023. {t('copyright')} <span style={{color:"#01FDC8",fontWeight:"700"}}>Aymen Guedri</span> </a>
           </p>
         </div>
       </div>
     </footer>
   </div>
-      </Footer>
+    </Footer>
     </div>
   )
 }
@@ -382,12 +383,19 @@ a {
 /* Media Query For different screens */
 @media (min-width:320px) and (max-width:479px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
   .footer-content {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1230px;
-    padding: 40px 15px 1050px;
+    margin-left:  -60px;
+    margin-right: 0px;
+    max-width: 390px;
+    padding: 40px 15px 850px;
     position: relative;
   }
+  .footer-copyright {
+    display: none;
+}
+
+.footer-social-links{
+  display: none;
+}
 }
 @media (min-width:480px) and (max-width:599px)  { /* smartphones, Android phones, landscape iPhone */
   .footer-content {

@@ -1,0 +1,72 @@
+/* workshopcard.css */
+
+.workshop-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 28px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  background-color: #fff;
+  margin: 90px 90px;
+}
+
+.workshop-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.workshop-image {
+  width: 350px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 16px;
+}
+
+.workshop-details {
+  flex: 1;
+}
+
+.workshop-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: rgb(255, 98, 0);
+}
+
+.workshop-date {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.workshop-description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+/* Additional CSS for the container to display cards in a row */
+
+.workshop-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: -10px;
+}
+
+/* Media query for mobile devices */
+
+@media (max-width: 768px) {
+  .workshop-card {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+  }
+
+  .workshop-image {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+}

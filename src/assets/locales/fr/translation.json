@@ -1,6 +1,6 @@
 {
   "home": "Accueil",
-  "guide": "Guider",
+  "guide": "Guide",
   "forum": "Forum",
   "reservation": "Réservation",
   "offers": "Offres",
@@ -8,6 +8,7 @@
   "news":" Actualités du FabLab FSB",
   "my_profile":"Mon profil",
   "student": "Membre étudiant FSB",
+  "user":"utilisateur FabLab FSB",
   "log_out":"Se déconnecter",
   "fsb":"Faculté des science de bizerte",
   "about_fablab":"À propos du FabLab FSB",
@@ -18,7 +19,7 @@
 
   "3d_printer":" Imprimante 3D",
    "3d_printer_c":"Créez des objets en trois dimensions à partir d'une conception numérique. Dans un fablab, les imprimantes 3D sont utilisées pour créer des prototypes physiques et des produits finaux en utilisant une variété de matériaux. Le Fablab FSB propose généralement différents types d'imprimantes 3D avec différentes capacités, et les utilisateurs peuvent créer leurs propres conceptions ou télécharger des modèles préfabriqués à imprimer.",
-   "donwload":"Guide de téléchargement",
+   "donwload":"Apprendre encore plus",
 
    "cutting_machine": "Machine de découpe de vinyle",
    "cutting_machine_c":"Découpez des motifs dans du vinyle adhésif pour réaliser des stickers, mais pas que ! La machine s'adapte à toutes les matières fines et souples.",
@@ -33,7 +34,47 @@
    "mec_tools_c":"L'outil mécanique dans un fablab fait référence à une machine utilisée pour façonner, couper, percer ou usiner divers matériaux tels que le bois, le métal ou le plastique.",
 
    "scanner3d":"Scanner 3D",
-   "scanner3d_c":"La numérisation 3D est une technologie permettant de créer des modèles 3D de haute précision d'objets du monde réel"
+   "scanner3d_c":"La numérisation 3D est une technologie permettant de créer des modèles 3D de haute précision d'objets du monde réel",
 
 
+
+
+  "student_E": "ETUDIANT EXTERNE",
+  "startup_S": "STARTUP",
+  "company_E": "ENTREPRISE",
+  "P_circuit": "PROTOTYPAGE DE CIRCUITS ÉLECTRONIQUES IMPRIMÉS",
+  "formations_ET_A": "FORMATIONS ET ATELIERS",
+  "other_O": "Autres",
+  "Abonnement_A":" Abonnement",
+  "month_M":"Mois",
+  "hour_h": "Heure",
+  "year_y":" Année",
+  "Gravure_G":"Gravure",
+  "on_Formation":" Les tarifs des formations et des ateliers peuvent varier en fonction de la durée, de la spécialisation et du niveau de compétence requis. Vous pouvez envisager des tarifs allant de 300 DT à 2000 DT par session de formation ou atelier",
+  "on_other_1":"Vente de matériaux et de consommables",
+  "on_other_2": "Partenariats et collaborations",
+  "on_other_3":" Événements communautaires",
+  "on_other_4":"Location d'espace de travail supplémentaire",
+  "on_other_5": "Vente de produits fabriqués",
+  "on_other_6":" Vente de produits fabriqués",
+  "select_plan":"sélectionnez le plan",
+
+
+
+
+  "Fname": "Prénom",
+    "Lname": "Nom de famille",
+    "Name_top": "Nom",
+    "contact": "E-mail",
+    "phone_tn": "Téléphone: (+216) - xx xxx xxx",
+    "Matériel_M": "Matérial",
+    "Type_T":" Type",
+    "descr_d":"Description",
+    "price_p": "Prix : ",
+    "Request_Resv": "Demander une réservation",
+    "see_prix":" Voir le prix",
+    "cancel_c":"Annuler",
+
+    "start_t":" Heure de début",
+    "end_t":"Heure de fin"
 }
