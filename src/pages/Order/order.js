@@ -48,7 +48,7 @@ const endTimes = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"]
     };
 
     // Send POST request to the backend API
-    axios.post('/api/reservations', reservation)
+    axios.post('https://fablabfsb-server.onrender.com/api/reservations', reservation)
       .then(response => {
         // Handle the response here, if needed
         console.log(response.data);
