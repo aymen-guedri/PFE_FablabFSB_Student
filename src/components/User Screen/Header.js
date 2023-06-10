@@ -102,7 +102,7 @@ function Header() {
                    
 
                     <NavList>
-                        <a href="https://forum-7dc12.web.app" target="_blank">
+                        <a href="https://forum.fablab-fsb.tech/" target="_blank">
                             <img src='/images/forum.png' alt='' width="35px"/>
                             <span>{t('forum')}</span>
                         </a>
