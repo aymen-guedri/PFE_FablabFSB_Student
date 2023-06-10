@@ -86,7 +86,7 @@ const handleLogOut = ()=> {
                 </span>
             </a>
             <a>
-                <span>www.fablab-fsb.tn</span>
+                <span>www.fablab-fsb.tech</span>
             </a>
             <a>
                 <span>©2023 FabLab FSB</span>
