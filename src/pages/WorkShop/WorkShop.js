@@ -26,7 +26,7 @@ function WorkShop() {
   useEffect(() => {
     // Fetch workshops from the backend or your API
     axios
-      .get('/api/workshops')
+      .get('https://fablabfsb-server.onrender.com/api/workshops')
       .then((response) => {
         setWorkshops(response.data);
       })
